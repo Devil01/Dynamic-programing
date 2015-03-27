@@ -1,0 +1,60 @@
+ #include<bits/stdc++.h>
+#include<stdlib.h>
+#include<cstdio>
+#include<utility>
+#include<vector>
+#include<iostream>
+#include<string.h>
+#include<map>
+#include<algorithm>
+using namespace std;
+#define pb push_back
+#define mp make_pair
+#define clr(x) x.clear()
+#define For(i,a,b) for(i=a;i<b;i++)
+#define loop(i,b) for(i=0;i<b;i++)
+#define Loop(i,b) for(i=1;i<=b;i++)
+#ifndef ONLINE_JUDGE
+#define gc getchar
+#else
+#define gc getchar_unlocked
+#endif
+const int MOD=1e9+7;
+typedef pair<int,int> PII;
+typedef vector<PII> VPII;
+typedef vector<int> VI;
+typedef long  long LL;
+#define  LL long long 
+#define MAX 100000
+#include<math.h>
+/*int read_int()
+{
+    char c = gc();
+    while(c<'0' || c>'9') c = gc();
+    
+    LL int ret = 0;
+    while(c>='0' && c<='9')
+    {
+        ret = 10 * ret + c - 48;
+        c = gc();
+    }
+    return ret;
+}*/
+int lcs(string x,string y,int m,int n)
+{
+    if(m==0||n==0)
+        return 0;
+    if(x[m-1]==y[n-1])
+        return 1+lcs(x,y,m-1,n-1);
+    else
+        return  max(lcs(x,y,m,n-1),lcs(x,y,m-1,n));
+}
+int main()
+{
+    string x="AGGTAB";
+    string y="GXTXAYB";
+    int m=x.size();
+    int n=y.size();
+    cout<<lcs(x,y,m,n);
+    return 0;
+}
